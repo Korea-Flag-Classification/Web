@@ -1,0 +1,181 @@
+<html>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <!-- Custom styles for this template -->
+    <link href="../static/css/starter-template.css" rel="stylesheet">
+
+
+    <head>
+        
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Taegeukgi Classifier by 3456</title>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+        <!-- Bootstrap core CSS -->
+        <link href="../statis/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="../statis/css/mdb.min.css" rel="stylesheet">
+        <!-- Your custom styles (optional) -->
+        <link href="../statis/css/style.min.css" rel="stylesheet">
+        <style type="text/css">
+          @media (min-width: 800px) and (max-width: 850px) {
+            .navbar:not(.top-nav-collapse) {
+              background: #1C2331 !important;
+            }
+          }
+      
+        </style>
+      <style type="text/css">/* Chart.js */
+      @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+      </head>
+
+
+    <body>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+            <div class="container">
+        
+              <!-- Brand -->
+              <a class="navbar-brand" href="#" target="_blank">
+                <strong>3456</strong>
+                <span class="sr-only">(current)</span>
+              </a>
+        
+              <!-- Collapse -->
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+        
+              <!-- Links -->
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link waves-effect waves-light" href="#">Home
+                      <span class="sr-only">(current)</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About Korea Flag history</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">About Korea Flag history</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">다른나라들의 예시</a>
+                  </li>
+                </ul>
+        
+                <!-- Right -->
+                <ul class="navbar-nav nav-flex-icons">
+        
+                  <li class="nav-item">
+                    <a href="https://github.com/Korea-Flag-Classification" class="nav-link border border-light rounded waves-effect waves-light" target="_blank">
+                      <i class="fab fa-github mr-2"></i>3456 GitHub
+                    </a>
+                  </li>
+                </ul>
+        
+              </div>
+        
+            </div>
+          </nav>
+
+
+
+
+          <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+        
+              <!--Second slide-->
+              <div class="carousel-item active">
+                <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/47.jpg'); background-repeat: no-repeat; background-size: cover;">
+        
+                  <!-- Mask & flexbox options-->
+                  <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+        
+                    <!-- Content -->
+                    <div class="text-center white-text mx-5 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                      <h1 class="mb-4">
+                        <strong>태극기 감별 AI</strong>
+                      </h1>
+        
+                      <p>
+                        <strong>South Krea Flag CLassification</strong>
+                      </p>
+        
+                      <p class="mb-4 d-none d-md-block">
+                        <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
+                          written versions
+                          available. Create your own, stunning website.</strong>
+                      </p>
+
+                      
+    <div class="agile-its">
+        <h2>Taegeukgi Classifier</h2>
+        <div class="w3layouts">
+            <div class="photos-upload-view">
+                <form id="upload" action="/predict" method="POST" enctype="multipart/form-data">
+                    <div class="upload-btn-wrapper">
+                        <input type="path" value=" " name="image">
+                    </div>
+                    <p>
+                    <input type="submit" value="예측 결과">
+                    {% if label %}
+                        <span class="result_lable">
+                        <img src="{{ image_url }}">
+                            {{ label }}
+                        </span>
+                    {% endif %}
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+        
+                      </a>
+                    </div>
+                    <!-- Content -->
+        
+                  </div>
+                  <!-- Mask & flexbox options-->
+        
+                </div>
+              </div>
+              <!--/Second slide-->
+        
+            </div>
+            <!--/.Slides-->
+        
+          </div>
+
+
+
+          
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/popper.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/mdb.min.js"></script>
+    <div class="hiddendiv common"></div>
+
+
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    
+      </script>
+    
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    </body>
+
+</html>
