@@ -16,15 +16,15 @@ from io import BytesIO
 
 
 app = Flask(__name__)
-
+model = tf.keras.models.load_model('./model/inceptionv3_small_better.h5')
+index_url = 'index.html'
 
 # 메인 페이지 라우팅
 @app.route("/")
 @app.route("/index")
 def index():
-    testData = 'testData array'
 
-    return flask.render_template('index.html', testDataHtml=testData)
+    return flask.render_template(index_url)
 
 
 # 데이터 예측 처리
@@ -35,10 +35,10 @@ def make_prediction():
         # 업로드 파일 처리 분기
 
         image_url = request.values['image']
-        if not 'http' in image_url: return render_template('index.html', label="No Image url")
+        if not 'http' in image_url: return render_template(index_url, label="No Image url")
 
         response = requests.get(image_url)
-        if not response: return render_template('index.html', label="No Image url")
+        if not response: return render_template(index_url, label="No Image url")
         image = Image.open(BytesIO(response.content)).convert('RGB')
 
         # image = Image.open(image_url).convert('RGB')
@@ -68,13 +68,12 @@ def make_prediction():
 
 
         # 결과 리턴
-        return render_template('index.html', label=is_korea_flag, image_url=image_url)
+        return render_template(index_url, label=is_korea_flag, image_url=image_url)
 
 
 if __name__ == '__main__':
     # 모델 로드
     # ml/model.py 선 실행 후 생성
-    model = tf.keras.models.load_model('./model/inceptionv3_small_better.h5')
-    # model.load_weights('./model/xception.h5')
+    #model = tf.keras.models.load_model('./model/inceptionv3_small_better.h5')
     # Flask 서비스 스타트
     app.run(host='127.0.0.1', port=8000, debug=True)
