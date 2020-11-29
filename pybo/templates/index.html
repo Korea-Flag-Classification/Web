@@ -111,7 +111,8 @@
                                 <input type="submit" value="예측 결과">
                                 {% if label %}
                                     <span class="result_lable">
-                                    <img src="{{ image_url }}">
+                                    <!-- 출력 이미지 사이즈 조정-->
+                                    <img src="{{ image_url }}" width="400" height="400">
                                         {{ label }}
                                     </span>
                                 {% endif %}
