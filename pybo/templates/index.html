@@ -111,12 +111,8 @@
                                 <input type="submit" value="예측 결과">
                                 {% if label %}
                                     <span class="result_lable">
-<<<<<<< HEAD
                                     <!-- 출력 이미지 사이즈 조정-->
-                                    <img src="{{ image_url }}" width="400" height="400">
-=======
-                                    <img src="{{ image_url }}" width="28">
->>>>>>> ed4de3a78c68ad28abca2252470e89d9836bc307
+                                    <img src="{{ image_url }}" style="width: 500px; height:auto;">
                                         {{ label }}
                                     </span>
                                 {% endif %}
@@ -172,7 +168,8 @@
                                 <input type="submit" value="예측 결과">
                                 {% if label %}
                                     <span class="result_lable">
-                                    <img src="{{ image_url }}">
+                                    <!-- 출력 이미지 사이즈 조정-->
+                                    <img src="{{ image_url }}" style="width: 500px; height:auto;">
                                         {{ label }}
                                     </span>
                                 {% endif %}
@@ -228,7 +225,8 @@
                                 <input type="submit" value="예측 결과">
                                 {% if label %}
                                     <span class="result_lable">
-                                    <img src="{{ image_url }}">
+                                    <!-- 출력 이미지 사이즈 조정-->
+                                    <img src="{{ image_url }}" style="width: 500px; height:auto;">
                                         {{ label }}
                                     </span>
                                 {% endif %}
