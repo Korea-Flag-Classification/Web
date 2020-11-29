@@ -8,143 +8,245 @@
 
 
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Taegeukgi Classifier by 3456</title>
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
-        <!-- Bootstrap core CSS -->
-        <link href="../statis/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
-        <link href="../statis/css/mdb.min.css" rel="stylesheet">
-        <!-- Your custom styles (optional) -->
-        <link href="../statis/css/style.min.css" rel="stylesheet">
-        <style type="text/css">
-          @media (min-width: 800px) and (max-width: 850px) {
-            .navbar:not(.top-nav-collapse) {
-              background: #FFFFFF !important;
-            }
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>Taegeukgi Classifier by 3456</title>
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+      <!-- Bootstrap core CSS -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <!-- Material Design Bootstrap -->
+      <link href="css/mdb.min.css" rel="stylesheet">
+      <!-- Your custom styles (optional) -->
+      <link href="css/style.min.css" rel="stylesheet">
+      <style type="text/css">
+        @media (min-width: 800px) and (max-width: 850px) {
+          .navbar:not(.top-nav-collapse) {
+            background: #1C2331 !important;
           }
-      
-        </style>
-      <style type="text/css">/* Chart.js */
-      @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
-      </head>
-
+        }
+    
+      </style>
+    <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
 
     <body>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-            <div class="container">
-        
-              <!-- Brand -->
-              <a class="navbar-brand" href="#" target="_blank">
-                <strong>3456</strong>
-                <span class="sr-only">(current)</span>
-              </a>
-        
-              <!-- Collapse -->
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-        
-              <!-- Links -->
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        
-                <!-- Left -->
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link waves-effect waves-light" href="#">Home
-                      <span class="sr-only">(current)</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About Korea Flag history</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">About Korea Flag history</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">다른나라들의 예시</a>
-                  </li>
-                </ul>
-        
-                <!-- Right -->
-                <ul class="navbar-nav nav-flex-icons">
-        
-                  <li class="nav-item">
-                    <a href="https://github.com/Korea-Flag-Classification" class="nav-link border border-light rounded waves-effect waves-light" target="_blank">
-                      <i class="fab fa-github mr-2"></i>3456 GitHub
-                    </a>
-                  </li>
-                </ul>
-        
-              </div>
-        
-            </div>
-          </nav>
-
-
-
-
-          <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-        
-              <!--Second slide-->
-              <div class="carousel-item active">
-                <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/47.jpg'); background-repeat: no-repeat; background-size: cover;">
-        
-                  <!-- Mask & flexbox options-->
-                  <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-        
-                    <!-- Content -->
-                    <div class="text-center white-text mx-5 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
-                      <h1 class="mb-4">
-                        <strong>태극기 감별 AI</strong>
-                      </h1>
-        
-                      <p>
-                        <strong>South Krea Flag CLassification</strong>
-                      </p>
-        
-                      <p class="mb-4 d-none d-md-block">
-                        <strong>태극기 분류를 위해서는 아래에 링크를 넣어주시고 예측 결과를 눌러주세요.</strong>
-                      </p>
-
-                      
-    <div class="agile-its">
-        <h2>Taegeukgi Classifier</h2>
-        <div class="w3layouts">
-            <div class="photos-upload-view">
-                <form id="upload" action="/predict" method="POST" enctype="multipart/form-data">
-                    <div class="upload-btn-wrapper">
-                        <input type="path" value=" " name="image">
-                    </div>
-                    <p>
-                    <input type="submit" value="예측 결과">
-                    {% if label %}
-                        <span class="result_lable">
-                        <img src="{{ image_url }}">
-                            {{ label }}
-                        </span>
-                    {% endif %}
-                    </p>
-                </form>
-            </div>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+        <div class="container">
+    
+          <!-- Brand -->
+          <a class="navbar-brand" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+            <strong>3456</strong>
+          </a>
+    
+          <!-- Collapse -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <!-- Links -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link waves-effect waves-light" href="#">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            </ul>
+    
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons">
+    
+              <li class="nav-item">
+                <a href="https://github.com/Korea-Flag-Classification" class="nav-link border border-light rounded waves-effect waves-light" target="_blank">
+                  <i class="fab fa-github mr-2"></i>3456 GitHub
+                </a>
+              </li>
+            </ul>
+    
+          </div>
+    
         </div>
-    </div>
-        
-                      </a>
+      </nav>
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+    
+          <!--First slide-->
+          <div class="carousel-item">
+            <div class="view" style="background-image: url('https://cdn.pixabay.com/photo/2017/11/08/08/07/gyeongbok-palace-2929520_960_720.jpg'); background-repeat: no-repeat; background-size: cover;">
+    
+              <!-- Mask & flexbox options-->
+              <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+    
+                <!-- Content -->
+                <div class="text-center white-text mx-5 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                  <h1 class="mb-4">
+                    <strong>태극기 감별 AI</strong>
+                  </h1>
+    
+                  <p>
+                    <strong>South Krea Flag CLassification</strong>
+                  </p>
+    
+                  <p class="mb-4 d-none d-md-block">
+                    <strong>태극기 분류를 위해서는 아래에 링크를 넣어주시고 예측 결과를 눌러주세요.</strong>
+                  </p>
+    
+                  <div class="agile-its">
+                    <h2>Taegeukgi Classifier</h2>
+                    <div class="w3layouts">
+                        <div class="photos-upload-view">
+                            <form id="upload" action="/predict" method="POST" enctype="multipart/form-data">
+                                <div class="upload-btn-wrapper">
+                                    <input type="path" value=" " name="image">
+                                </div>
+                                <p>
+                                <input type="submit" value="예측 결과">
+                                {% if label %}
+                                    <span class="result_lable">
+                                    <img src="{{ image_url }}">
+                                        {{ label }}
+                                    </span>
+                                {% endif %}
+                                </p>
+                            </form>
+                        </div>
                     </div>
-                    <!-- Content -->
-        
-                  </div>
-                  <!-- Mask & flexbox options-->
-        
                 </div>
+                </div>
+                <!-- Content -->
+    
               </div>
-              <!--/Second slide-->
-        
+              <!-- Mask & flexbox options-->
+    
             </div>
+          </div>
+          <!--/First slide-->
+    
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="view" style="background-image: url('https://cdn.pixabay.com/photo/2019/10/24/08/55/palaces-4573799_960_720.jpg'); background-repeat: no-repeat; background-size: cover;">
+    
+              <!-- Mask & flexbox options-->
+              <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+    
+                <!-- Content -->
+                <div class="text-center white-text mx-5 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                  <h1 class="mb-4">
+                    <strong>태극기 감별 AI</strong>
+                  </h1>
+    
+                  <p>
+                    <strong>South Krea Flag CLassification</strong>
+                  </p>
+    
+                  <p class="mb-4 d-none d-md-block">
+                    <strong>태극기 분류를 위해서는 아래에 링크를 넣어주시고 예측 결과를 눌러주세요.</strong>
+                  </p>
+    
+                  <div class="agile-its">
+                    <h2>Taegeukgi Classifier</h2>
+                    <div class="w3layouts">
+                        <div class="photos-upload-view">
+                            <form id="upload" action="/predict" method="POST" enctype="multipart/form-data">
+                                <div class="upload-btn-wrapper">
+                                    <input type="path" value=" " name="image">
+                                </div>
+                                <p>
+                                <input type="submit" value="예측 결과">
+                                {% if label %}
+                                    <span class="result_lable">
+                                    <img src="{{ image_url }}">
+                                        {{ label }}
+                                    </span>
+                                {% endif %}
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Content -->
+    
+              </div>
+              <!-- Mask & flexbox options-->
+    
+            </div>
+          </div>
+          <!--/Second slide-->
+    
+          <!--Third slide-->
+          <div class="carousel-item active">
+            <div class="view" style="background-image: url('https://cdn.pixabay.com/photo/2017/12/06/17/07/gwanghwamun-3002209_960_720.jpg'); background-repeat: no-repeat; background-size: cover;">
+    
+              <!-- Mask & flexbox options-->
+              <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+    
+                <!-- Content -->
+                <div class="text-center white-text mx-5 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                  <h1 class="mb-4">
+                    <strong>태극기 감별 AI</strong>
+                  </h1>
+    
+                  <p>
+                    <strong>South Krea Flag CLassification</strong>
+                  </p>
+    
+                  <p class="mb-4 d-none d-md-block">
+                    <strong>태극기 분류를 위해서는 아래에 링크를 넣어주시고 예측 결과를 눌러주세요.</strong>
+                  </p>
+    
+                  <div class="agile-its">
+                    <h2>Taegeukgi Classifier</h2>
+                    <div class="w3layouts">
+                        <div class="photos-upload-view">
+                            <form id="upload" action="/predict" method="POST" enctype="multipart/form-data">
+                                <div class="upload-btn-wrapper">
+                                    <input type="path" value=" " name="image">
+                                </div>
+                                <p>
+                                <input type="submit" value="예측 결과">
+                                {% if label %}
+                                    <span class="result_lable">
+                                    <img src="{{ image_url }}">
+                                        {{ label }}
+                                    </span>
+                                {% endif %}
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Content -->
+    
+              </div>
+              <!-- Mask & flexbox options-->
+    
+            </div>
+          </div>
+          <!--/Third slide-->
+    
+        </div>
+        <!--/.Slides-->
+    
+        <!--Controls-->
+        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
+    
+      </div>
+
+          
             <!--/.Slides-->
             <main>
               <div class="container">
@@ -155,14 +257,12 @@
 
                 <hr class="my-5">
                 <hr class="my-5">
-                <hr class="my-5">
-                <hr class="my-5">
-                <hr class="my-5">
+
           
                 <!--Section: Main features & Quick Start-->
                 <section>
           
-                  <h3 class="h3 text-center mb-5">About MDB</h3>
+                  <h3 class="h3 text-center mb-5"></h3>
           
                   <!--Grid row-->
                   <div class="row wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
@@ -173,11 +273,12 @@
                       <!--First row-->
                       <div class="row">
                         <div class="col-1 mr-3">
-                          <i class="fas fa-code fa-2x indigo-text"></i>
+                          <i class="fas fa-question fa-2x mb-1 indigo-text" aria-hidden="true"></i>
                         </div>
                         <div class="col-10">
                           <h5 class="feature-title">태극기란?</h5>
-                          <p class="grey-text">대한민국의 국기. 흰색 배경 중앙에 파란색과 빨간색의 태극을, 네 귀퉁이에는 검은색의 사괘를 그린 것이다.</p>
+                          <p class="grey-text">대한민국의 국기. 흰색 배경 중앙에 파란색과 빨간색의 태극을, 
+                            네 귀퉁이에는 검은색의 사괘를 그린 것</p>
                         </div>
                       </div>
                       <!--/First row-->
@@ -187,11 +288,16 @@
                       <!--Second row-->
                       <div class="row">
                         <div class="col-1 mr-3">
-                          <i class="fas fa-book fa-2x blue-text"></i>
+                         
                         </div>
                         <div class="col-10">
                           <h5 class="feature-title"></h5>
-                          <p class="grey-text">1882년 조미수호통상조약에서 최초로 사용되었으며, 1883년 1월 27일(음력) 조선의 정식 국기로 선포되었다. 대한제국이 1910년 국권을 상실한 이후 일본 정부에 의해 사용이 금지되었으나 일제강점기 내내 독립운동의 상징으로 기능하였으며, 1945년 광복과 함께 자유롭게 게양할 수 있게 되었다.[8] 북한 역시 광복 이후부터 1948년에 인공기가 제정되기 전까지 2년간 태극기를 사용하였다.
+                          <p class="grey-text">1882년 조미수호통상조약에서 최초로 사용되었으며, 
+                            1883년 1월 27일 조선의 정식 국기로 선포되었다. 
+                            대한제국이 1910년 국권을 상실한 이후 일본 정부에 의해 사용이 금지되었으나 
+                            일제강점기 내내 독립운동의 상징으로 기능하였으며, 
+                            1945년 광복과 함께 자유롭게 게양할 수 있게 되었다. 
+                            북한 역시 광복 이후부터 1948년에 인공기가 제정되기 전까지 2년간 태극기를 사용하였다.
                           </p>
                         </div>
                       </div>
@@ -288,167 +394,56 @@
                 <!--Section: Not enough-->
           
                 <hr class="mb-5">
-          
-                <!--Section: More-->
-                <section>
-          
-                  <h2 class="my-5 h3 text-center">제작 계기</h2>
-          
-                  <!--First row-->
-                  <div class="row features-small mt-5 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                
+                <section class="mt-5 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+
+                  <!--Grid row-->
+                  <div class="row">
           
                     <!--Grid column-->
-                    <div class="col-xl-3 col-lg-6">
-                      <!--Grid row-->
-                      <div class="row">
-                        <div class="col-2">
-                          <i class="fab fa-firefox fa-2x mb-1 indigo-text" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-10 mb-2 pl-3">
-                          <h5 class="feature-title font-bold mb-1">Cross-browser compatibility</h5>
-                          <p class="grey-text mt-2">Chrome, Firefox, IE, Safari, Opera, Microsoft Edge - MDB loves all browsers;
-                            all browsers love MDB.
-                          </p>
-                        </div>
-                      </div>
-                      <!--/Grid row-->
+                    <div class="col-md-6 mb-4">
+          
+                      <img src="https://github.com/Korea-Flag-Classification/Korea_Flag_Classification/blob/main/content/github%20image.PNG?raw=true" class="img-fluid z-depth-1-half" alt="">
+          
                     </div>
-                    <!--/Grid column-->
+                    <!--Grid column-->
           
                     <!--Grid column-->
-                    <div class="col-xl-3 col-lg-6">
-                      <!--Grid row-->
-                      <div class="row">
-                        <div class="col-2">
-                          <i class="fas fa-level-up-alt fa-2x mb-1 indigo-text" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-10 mb-2">
-                          <h5 class="feature-title font-bold mb-1">Frequent updates</h5>
-                          <p class="grey-text mt-2">MDB becomes better every month. We love the project and enhance as much as
-                            possible.
-                          </p>
-                        </div>
-                      </div>
-                      <!--/Grid row-->
-                    </div>
-                    <!--/Grid column-->
+                    <div class="col-md-6 mb-4">
           
-                    <!--Grid column-->
-                    <div class="col-xl-3 col-lg-6">
-                      <!--Grid row-->
-                      <div class="row">
-                        <div class="col-2">
-                          <i class="fas fa-comments fa-2x mb-1 indigo-text" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-10 mb-2">
-                          <h5 class="feature-title font-bold mb-1">Active community</h5>
-                          <p class="grey-text mt-2">Our society grows day by day. Visit our forum and check how it is to be a
-                            part of our family.
-                          </p>
-                        </div>
-                      </div>
-                      <!--/Grid row-->
-                    </div>
-                    <!--/Grid column-->
+                      <!-- Main heading -->
+                      
+                      <h3 class="h3 mb-3"><i class="fas fa-comments fa-1x mb-1 indigo-text" aria-hidden="true"></i> To contact us</h3>
+                      <p>
+                        아래의 깃허브 링크를 통해 연락주세요
+                      <p>
+                        아래의 링크에서 소스코드 또한 보실 수 있습니다.</p>
+
+                      <!-- Main heading -->
           
-                    <!--Grid column-->
-                    <div class="col-xl-3 col-lg-6">
-                      <!--Grid row-->
-                      <div class="row">
-                        <div class="col-2">
-                          <i class="fas fa-code fa-2x mb-1 indigo-text" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-10 mb-2">
-                          <h5 class="feature-title font-bold mb-1">jQuery 3.x</h5>
-                          <p class="grey-text mt-2">MDB is integrated with newest jQuery. Therefore you can use all the latest
-                            features which come along with
-                            it.
-                          </p>
-                        </div>
-                      </div>
-                      <!--/Grid row-->
+                      <hr>
+          
+                      <p>
+                        Contact us via our GitHub link below
+                      <p>
+                        Source code is also available</p>
+          
+                      <!-- CTA -->
+                      <a target="_blank" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" class="btn btn-grey btn-md waves-effect waves-light">GitHub Link
+                        <i class="fas fa-code fa-2x mb-1 indigo-text"></i>
+                      </a>
+          
                     </div>
-                    <!--/Grid column-->
+                    <!--Grid column-->
           
                   </div>
-                  <!--/First row-->
-          
-                  <!--Second row-->
-                  <div class="row features-small mt-4 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
-          
-                    <!--Grid column-->
-                    <div class="col-xl-3 col-lg-6">
-                      <!--Grid row-->
-                      <div class="row">
-                        <div class="col-2">
-                          <i class="fas fa-cubes fa-2x mb-1 indigo-text" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-10 mb-2">
-                          <h5 class="feature-title font-bold mb-1">Modularity</h5>
-                          <p class="grey-text mt-2">Material Design for Bootstrap comes with both, compiled, ready to use
-                            libraries including all features as
-                            well as modules for CSS (SASS files) and JS.</p>
-                        </div>
-                      </div>
-                      <!--/Grid row-->
-                    </div>
-                    <!--/Grid column-->
-          
-                    <!--Grid column-->
-                    <div class="col-xl-3 col-lg-6">
-                      <!--Grid row-->
-                      <div class="row">
-                        <div class="col-2">
-                          <i class="fas fa-question fa-2x mb-1 indigo-text" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-10 mb-2">
-                          <h5 class="feature-title font-bold mb-1">Technical support</h5>
-                          <p class="grey-text mt-2">We care about reliability. If you have any questions - do not hesitate to
-                            contact us.
-                          </p>
-                        </div>
-                      </div>
-                      <!--/Grid row-->
-                    </div>
-                    <!--/Grid column-->
-          
-                    <!--Grid column-->
-                    <div class="col-xl-3 col-lg-6">
-                      <!--Grid row-->
-                      <div class="row">
-                        <div class="col-2">
-                          <i class="fas fa-th fa-2x mb-1 indigo-text" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-10 mb-2">
-                          <h5 class="feature-title font-bold mb-1">Flexbox</h5>
-                          <p class="grey-text mt-2">MDB fully supports Flex Box. You can forget about alignment issues.</p>
-                        </div>
-                      </div>
-                      <!--/Grid row-->
-                    </div>
-                    <!--/Grid column-->
-          
-                    <!--Grid column-->
-                    <div class="col-xl-3 col-lg-6">
-                      <!--Grid row-->
-                      <div class="row">
-                        <div class="col-2">
-                          <i class="far fa-file-code fa-2x mb-1 indigo-text" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-10 mb-2">
-                          <h5 class="feature-title font-bold mb-1">SASS files</h5>
-                          <p class="grey-text mt-2">Arranged and well documented .scss files can't wait until you compile them.</p>
-                        </div>
-                      </div>
-                      <!--/Grid row-->
-                    </div>
-                    <!--/Grid column-->
-          
-                  </div>
-                  <!--/Second row-->
+                  <!--Grid row-->
           
                 </section>
+
+
                 <!--Section: More-->
+                
           
               </div>
             </main>
