@@ -11,7 +11,7 @@ body,
     height: 100%; }
     .carousel .carousel-inner .carousel-item,
     .carousel .carousel-inner .active {
-      width: 300px; }
+      width: 100%; }
 
 
 /* Navbar animation */
